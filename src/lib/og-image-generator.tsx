@@ -71,13 +71,13 @@ const Template = (props: OgData) => (
 		{props.logo ? (
 			<img
 				src={props.logo}
-				style={{ position: "absolute", bottom: "10px", right: "10px", zIndex: 100 }}
+				style={{ position: "absolute", bottom: "10px", right: "10px"}}
 				width={24}
 				height={24}
 				alt="Logo"
 			/>
 		) : (
-			<span style={{ position: "absolute", bottom: "20px", right: "20px", zIndex: 100 }}>{props.author}</span>
+			<span style={{ position: "absolute", bottom: "20px", right: "20px" }}>{props.author}</span>
 		)}
 	</div>
 );

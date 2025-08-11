@@ -92,6 +92,12 @@ const { frontmatter } = Astro.props;
 							src={frontmatter.data?.cover}
 							alt={`Cover image for ${frontmatter.data?.title}`}
 						/>
+						) }{ (
+						<img
+						class="mt-12 w-full rounded-4xl lg:w-auto lg:min-w-[50rem] lg:rounded-5xl"
+						src="/default-cover.jpg" // put this fallback image in your /public folder
+						alt="Default cover image"
+						/>
 					)
 				}
 				<Prose><slot /></Prose>
