@@ -11,7 +11,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout seo={frontmatter.data.seo}>
-	<main>
+	<main >
 		{
 			frontmatter.data.hideTitle ? null : (
 				<header class="py-32 lg:pt-40 lg:pb-36">

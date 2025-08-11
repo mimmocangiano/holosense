@@ -9,6 +9,7 @@ const pagesCollection = defineCollection({
 			lastUpdateDate: z.date(),
 			hideTitle: z.optional(z.boolean()),
 			hidden: z.optional(z.boolean()),
+			isHomepage: z.optional(z.boolean()),
 			cover: z.optional(image()),
 			seo: z.object({
 				title: z.string(),

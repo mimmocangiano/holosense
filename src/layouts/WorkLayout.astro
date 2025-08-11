@@ -32,9 +32,12 @@ const componentLocales: ComponentLocales = {
 	en: {
 		visitProject: "Visit project",
 	},
+	ja: {
+		visitProject: "プロジェクトを見る",
+	},
 };
 
-const l = componentLocales[currentLocale ?? defaultLocale];
+const l = componentLocales[currentLocale ?? defaultLocale] ?? componentLocales[defaultLocale];
 
 const { frontmatter } = Astro.props;
 

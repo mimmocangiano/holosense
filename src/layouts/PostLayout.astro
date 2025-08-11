@@ -35,7 +35,7 @@ const componentLocales: ComponentLocales = {
 	},
 };
 
-const l = componentLocales[currentLocale ?? defaultLocale];
+const l = componentLocales[currentLocale ?? defaultLocale] ?? componentLocales[defaultLocale];
 
 const { frontmatter } = Astro.props;
 ---

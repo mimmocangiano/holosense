@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import { defaultLocale } from "site.config";
+import PageLayout from "@/layouts/PageLayout.astro";
+
+// Find the designated homepage
+const pages = await getCollection("pages");
+const homepage = pages.find(page => page.data.isHomepage && !page.data.hidden);
+
+if (!homepage) {
+    // No homepage set, show 404
+    return Astro.redirect("/404");
+}
+
+// Render the homepage directly
+const { Content } = await homepage.render();
+---
+
+<PageLayout frontmatter={homepage}>
+    <Content />
+</PageLayout>

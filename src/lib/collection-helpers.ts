@@ -15,10 +15,16 @@ export async function getCollectionStaticPaths<CollectionName extends keyof Cont
 		const [lang, ...slug] = item.slug.split("/");
 		let localizedSlug = slug;
 
-		if (collectionName === "pages") {
-			// For pages handle homepage slug
-			localizedSlug = slug[0] === "homepage" || slug[0] === "index" ? [] : slug;
+			if (collectionName === "pages") {
+		// Handle homepage designation - homepage pages get their own slug
+		if (item.data.isHomepage) {
+			localizedSlug = slug; // Keep the slug for the homepage page
+		} else if (slug[0] === "index") {
+			localizedSlug = [];
+		} else {
+			localizedSlug = slug;
 		}
+	}
 
 		if (lang !== defaultLocale && !locale) {
 			localizedSlug = [lang, ...localizedSlug];
@@ -39,6 +45,8 @@ export async function getCollectionStaticPaths<CollectionName extends keyof Cont
 	if (locale) {
 		pathsRes = paths.filter((path) => path.params.lang === locale);
 	}
+
+
 
 	return pathsRes;
 }

@@ -1,0 +1,15 @@
+{
+  "logo": {
+    "imagePath": "/src/assets/global/logo/imagePath.svg",
+    "title": "Holosense"
+  },
+  "pages": [
+    {
+      "title": "まもなく公開",
+      "link": "/"
+    }
+  ],
+  "actions": [],
+  "contacts": {},
+  "socials": []
+}

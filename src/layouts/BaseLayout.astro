@@ -6,12 +6,13 @@ import Navigation from "@/components/headers/Navigation.astro";
 import LinesWrapper from "@/components/primitives/LinesWrapper.astro";
 import LoadingIndicator from "@/components/primitives/LoadingIndicator.astro";
 import Widget from "@/components/primitives/Widget.astro";
-import { getLocalizedSettings } from "@/lib/localization-helpers";
+import { getLocalizedSettings, getBackgroundImageSettings } from "@/lib/localization-helpers";
 import type { SEOProps } from "astro-seo";
 
 const currentLocale = Astro.currentLocale;
 
 const { widget } = getLocalizedSettings(currentLocale);
+const backgroundImage = getBackgroundImageSettings();
 
 type Props = {
 	seo?: SEOProps | MinimalSeo;
@@ -25,11 +26,27 @@ const { seo } = Astro.props;
 		<ViewTransitions />
 	</Head>
 	<body>
+		<!-- <Background image /> -->
+		<div>
+			{backgroundImage.enabled && backgroundImage.image && (
+				<div
+					class="absolute top-0 left-0 w-full h-full pointer-events-none -z-10"
+					style={`
+						background-image: url('${backgroundImage.image}');
+						background-size: ${backgroundImage.width}px ${backgroundImage.height}px;
+						background-repeat: no-repeat;
+						background-position: top left;
+						opacity: ${backgroundImage.opacity / 100};
+					`}
+				></div>
+			)}
+		</div>
 		<LoadingIndicator />
 		<LinesWrapper />
 		<Navigation showTopBar />
 		<slot />
 		{widget.enabled && <Widget />}
-		<Footer />
+
+
 	</body>
 </html>

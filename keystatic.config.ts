@@ -31,10 +31,10 @@ export default config({
 			mark: BrandMarkComponent,
 		},
 	},
-	singletons: {
-		header: singleton({
-			label: "Navigation",
-			path: "src/content/global/header",
+    singletons: {
+        header_en: singleton({
+            label: "Navigation (EN)",
+            path: "src/content/global/en/header",
 			format: { data: "json" },
 			schema: {
 				logo: fields.object({
@@ -100,6 +100,72 @@ export default config({
 				),
 			},
 		}),
+        header_ja: singleton({
+            label: "Navigation (JA)",
+            path: "src/content/global/ja/header",
+            format: { data: "json" },
+            schema: {
+                logo: fields.object({
+                    imagePath: fields.image({
+                        label: "Logo",
+                        directory: "src/assets/global",
+                        publicPath: "/src/assets/global/",
+                        validation: {
+                            isRequired: false,
+                        },
+                    }),
+                    title: fields.text({ label: "Title" }),
+                }),
+                pages: fields.array(
+                    fields.object({
+                        title: fields.text({ label: "Title" }),
+                        link: fields.text({ label: "Url" }),
+                    }),
+                    {
+                        label: "Pages",
+                        itemLabel: (props) => props.fields.title.value,
+                    },
+                ),
+                actions: fields.array(
+                    fields.object({
+                        title: fields.text({ label: "Title" }),
+                        link: fields.text({ label: "Url" }),
+                        style: fields.select({
+                            label: "Style",
+                            options: [
+                                { label: "Filled", value: "button" },
+                                { label: "Outlined", value: "outline" },
+                            ],
+                            defaultValue: "button",
+                        }),
+                    }),
+                    {
+                        label: "Actions",
+                        itemLabel: (props) => props.fields.title.value,
+                    },
+                ),
+                contacts: fields.object(
+                    {
+                        phone: fields.text({ label: "Phone" }),
+                        mail: fields.text({ label: "Email" }),
+                        address: fields.text({ label: "Address" }),
+                    },
+                    {
+                        label: "Contacts",
+                    },
+                ),
+                socials: fields.array(
+                    fields.object({
+                        icon: fields.text({ label: "Icon" }),
+                        link: fields.text({ label: "Url" }),
+                    }),
+                    {
+                        itemLabel: (props) => props.fields.link.value,
+                        label: "Social",
+                    },
+                ),
+            },
+        }),
 		widget: singleton({
 			label: "Whatsapp widget",
 			path: "src/content/global/widget",
@@ -114,14 +180,24 @@ export default config({
 				link: fields.url({ label: "Link" }),
 			},
 		}),
-		footer: singleton({
-			label: "Footer",
-			path: "src/content/global/footer",
+        footer_en: singleton({
+            label: "Footer (EN)",
+            path: "src/content/global/en/footer",
 			format: { data: "json" },
 			schema: {
 				title: fields.text({ label: "Title" }),
 				subtitle: fields.text({ label: "Subtitle" }),
 				copyright: fields.text({ label: "Copyright" }),
+                buttons: fields.array(
+                    fields.object({
+                        text: fields.text({ label: "Text" }),
+                        url: fields.text({ label: "URL" }),
+                    }),
+                    {
+                        label: "Buttons",
+                        itemLabel: (props) => props.fields.text.value ?? "Button",
+                    },
+                ),
 				contacts: fields.object(
 					{
 						phone: fields.text({ label: "Phone" }),
@@ -142,16 +218,103 @@ export default config({
 						label: "Contacts",
 					},
 				),
-			},
-		}),
+            },
+        }),
+        footer_ja: singleton({
+            label: "Footer (JA)",
+            path: "src/content/global/ja/footer",
+            format: { data: "json" },
+            schema: {
+                title: fields.text({ label: "Title" }),
+                subtitle: fields.text({ label: "Subtitle" }),
+                copyright: fields.text({ label: "Copyright" }),
+                buttons: fields.array(
+                    fields.object({
+                        text: fields.text({ label: "Text" }),
+                        url: fields.text({ label: "URL" }),
+                    }),
+                    {
+                        label: "Buttons",
+                        itemLabel: (props) => props.fields.text.value ?? "Button",
+                    },
+                ),
+                contacts: fields.object(
+                    {
+                        phone: fields.text({ label: "Phone" }),
+                        mail: fields.text({ label: "Email" }),
+                        socials: fields.array(
+                            fields.object({
+                                title: fields.text({ label: "Title" }),
+                                link: fields.text({ label: "Url" }),
+                                icon: fields.text({ label: "Icon" }),
+                            }),
+                            {
+                                label: "Social",
+                                itemLabel: (props) => props.fields.title.value ?? "Imposta un titolo",
+                            },
+                        ),
+                    },
+                    {
+                        label: "Contacts",
+                    },
+                ),
+            },
+        }),
+        background_image: singleton({
+            label: "Background Image",
+            path: "src/content/global/background-image",
+            format: { data: "json" },
+            schema: {
+                image: fields.image({
+                    label: "Background Image",
+                    directory: "src/assets/backgrounds",
+                    publicPath: "/src/assets/backgrounds/",
+                    validation: {
+                        isRequired: false,
+                    },
+                }),
+                width: fields.integer({
+                    label: "Width (px)",
+                    description: "Width of the background image in pixels",
+                    defaultValue: 1920,
+                    validation: {
+                        min: 100,
+                        max: 4000,
+                    },
+                }),
+                height: fields.integer({
+                    label: "Height (px)",
+                    description: "Height of the background image in pixels",
+                    defaultValue: 1080,
+                    validation: {
+                        min: 100,
+                        max: 4000,
+                    },
+                }),
+                opacity: fields.integer({
+                    label: "Opacity (%)",
+                    description: "Opacity of the background image (0-100)",
+                    defaultValue: 100,
+                    validation: {
+                        min: 0,
+                        max: 100,
+                    },
+                }),
+                enabled: fields.checkbox({
+                    label: "Enable Background Image",
+                    description: "Show the background image on pages",
+                    defaultValue: false,
+                }),
+            },
+        }),
 	},
 	collections: {
 		pages: collection({
-			label: "Pages",
+			label: "Pages (EN)",
 			slugField: "title",
-			path: "src/content/pages/it/*",
+			path: "src/content/pages/en/*",
 			entryLayout: "content",
-			columns: ["title", "lastUpdateDate"],
+            columns: ["title", "lastUpdateDate"],
 			previewUrl: "/{slug}",
 			format: { contentField: "content" },
 			schema: {
@@ -163,7 +326,6 @@ export default config({
 							isRequired: true,
 						},
 					},
-					// Optional slug label overrides
 					slug: {
 						label: "SEO-friendly slug",
 						description:
@@ -177,7 +339,7 @@ export default config({
 				cover: fields.image({
 					label: "Cover Image",
 					directory: "src/assets/pages",
-					publicPath: "@/assets/pages/",
+                    publicPath: "/src/assets/pages/",
 				}),
 				type: fields.select({
 					label: "Tipo pagina",
@@ -219,6 +381,12 @@ export default config({
 					label: "Nascondi titolo",
 					defaultValue: false,
 				}),
+				hidden: fields.checkbox({ label: "Hidden" }),
+				isHomepage: fields.checkbox({
+					label: "Set as Homepage",
+					description: "Check this to make this page the default homepage at /",
+					defaultValue: false,
+				}),
 				addPadding: fields.checkbox({
 					label: "Aggiungi padding",
 					defaultValue: true,
@@ -244,21 +412,19 @@ export default config({
 								},
 							},
 						}),
-						author: fields.relationship({
-							label: "Author",
-							description: "Autore della pagina",
-							collection: "authors",
-							validation: {
-								isRequired: true,
-							},
-						}),
+                        author: fields.text({
+                            label: "Author",
+                            validation: {
+                                isRequired: true,
+                            },
+                        }),
 					},
 					{
 						label: "SEO",
 						description: "Opzioni SEO per la pagina",
 					},
 				),
-				content: fields.markdoc({
+                content: fields.markdoc({
 					label: "Content",
 					options: {
 						heading: [2, 3, 4, 5, 6],
@@ -275,7 +441,7 @@ export default config({
 							schema: {
 								class: fields.text({
 									label: "Classi custom",
-								}),
+                        }),
 							},
 						}),
 						ContainerFluid: wrapper({
@@ -632,9 +798,9 @@ export default config({
 			},
 		}),
 		posts: collection({
-			label: "Posts",
+			label: "Posts (EN)",
 			slugField: "title",
-			path: "src/content/posts/it/*",
+			path: "src/content/posts/en/*",
 			entryLayout: "content",
 			columns: ["title", "lastUpdateDate"],
 			previewUrl: "/post/{slug}",
@@ -661,18 +827,22 @@ export default config({
 						isRequired: true,
 					},
 				}),
-				author: fields.relationship({
-					label: "Author",
-					description: "Autore dell'articolo",
-					collection: "authors",
+				category: fields.text({
+					label: "Category",
 					validation: {
 						isRequired: true,
 					},
 				}),
+                author: fields.text({
+                    label: "Author",
+                    validation: {
+                        isRequired: true,
+                    },
+                }),
 				cover: fields.image({
 					label: "Cover Image",
 					directory: "src/assets/posts",
-					publicPath: "@/assets/posts/",
+                    publicPath: "/src/assets/posts/",
 				}),
 				tags: fields.array(fields.text({ label: "Tag" }), {
 					label: "Tag",
@@ -715,9 +885,9 @@ export default config({
 			},
 		}),
 		works: collection({
-			label: "Works",
+			label: "Works (EN)",
 			slugField: "title",
-			path: "src/content/works/it/*",
+			path: "src/content/works/en/*",
 			entryLayout: "content",
 			columns: ["title", "lastUpdateDate"],
 			previewUrl: "/works/{slug}",
@@ -757,7 +927,7 @@ export default config({
 				cover: fields.image({
 					label: "Cover Image",
 					directory: "src/assets/works",
-					publicPath: "@/assets/works/",
+                    publicPath: "/src/assets/works/",
 				}),
 				pubDate: fields.date({
 					label: "Publication Date",
@@ -817,7 +987,7 @@ export default config({
 				avatar: fields.image({
 					label: "Immagine di profilo",
 					directory: "src/assets/authors",
-					publicPath: "@/assets/authors/",
+                    publicPath: "/src/assets/authors/",
 				}),
 				content: fields.document({
 					label: "Content",

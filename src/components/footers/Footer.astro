@@ -76,7 +76,7 @@ const lastPosts = posts
 ---
 
 <div
-	class="flex-col text-sm font-medium justify-end pb-10 px-4 lg:px-20 pt-16 flex bg-black"
+	class="flex-col text-sm font-medium justify-end pb-10 px-4 lg:px-20 pt-2 flex bg-black"
 >
 	<Container>
 		<div class="items-center flex-col w-full">
@@ -106,11 +106,7 @@ const lastPosts = posts
 					<div
 						class="items-center gap-x-[0.63rem] flex mb-5 text-white font-semibold uppercase"
 					>
-						<div
-							class="items-center py-3 px-5 flex border-2 border-white border-solid rounded-3xl"
-						>
-							<div>Links</div>
-						</div>
+
 					</div>
 					<div class="mt-10">
 						<div
@@ -121,9 +117,9 @@ const lastPosts = posts
 									class="items-start flex-col flex gap-[0.63rem]"
 								>
 									<p
-										class="text-white border-b-2 text-lg pb-1 mb-3 border-white border-solid"
+										class="text-white text-sm pb-0 mb-1"
 									>
-										Collegamenti utili
+										Explore
 									</p>
 									<ul
 										class="text-white/[0.65] mb-3 list-none"
@@ -142,7 +138,7 @@ const lastPosts = posts
 									</ul>
 								</div>
 							</div>
-							<div
+							<!-- <div
 								class="items-start flex-col flex gap-[0.63rem]"
 							>
 								<p
@@ -161,12 +157,12 @@ const lastPosts = posts
 										)
 									}
 								</ul>
-							</div>
+							</div> -->
 							<div
 								class="items-start flex-col flex gap-[0.63rem]"
 							>
 								<p
-									class="text-white border-b-2 text-lg pb-1 mb-3 border-white border-solid"
+									class="text-white text-sm pb-0 mb-1"
 								>
 									Latest posts
 								</p>
@@ -188,22 +184,17 @@ const lastPosts = posts
 				<div class="col-span-1 row-span-1"></div>
 				<div class="col-span-1 row-span-1 text-white">
 					<div
-						class="items-center gap-x-[0.63rem] flex mb-5 font-semibold uppercase"
-					>
-						<div
-							class="items-center py-3 px-5 flex border-2 border-white border-solid rounded-3xl"
-						>
-							<div>stay in touch</div>
-						</div>
+						class="items-center gap-x-[0.63rem] flex mb-5 font-semibold uppercase">
+
 					</div>
-					<div class="mt-10 text-lg">
+					<div class="mt-10 text-sm">
 						<div class="items-start flex-col flex">
-							<a
+							<!-- <a
 								class="border-b-2 pb-1 mb-3 border-white border-solid"
 								href={`tel:${contacts.phone}`}
 							>
 								{contacts.phone}
-							</a>
+							</a> -->
 							<a
 								class="border-b-2 pb-1 mb-3 border-white border-solid"
 								href={`mailto:${contacts.mail}`}
@@ -216,7 +207,7 @@ const lastPosts = posts
 			</div>
 			<div class="mt-16">
 				<div class="items-center justify-between flex gap-4">
-					<p class="text-white/[0.78] text-base">
+					<p class="text-white/[0.78] text-sm">
 						{footer.copyright}
 					</p>
 					<div class="flex gap-4">
@@ -231,23 +222,23 @@ const lastPosts = posts
 											: "text-white",
 									]}
 								>
-									<span class="overflow-hidden text-md xs:text-lg md:text-xl">
+									<span class="overflow-hidden text-sm xs:text-lg md:text-xl">
 										<span>{locale}</span>
 									</span>
 								</a>
 							))
 						}
 					</div>
-					<div class="flex gap-5 text-lg text-blue-700">
+					<div class="flex gap-5 text-sm text-blue-700">
 						<a href="/privacy" class="inline-block max-w-full"
 							><p
-								class="text-white border-b-2 cursor-pointer pb-1 border-white border-solid"
+								class="text-white text-sm pb-0 mb-1"
 							>
 								Privacy policy
 							</p></a
 						><a href="/terms" class="inline-block max-w-full"
 							><p
-								class="text-white border-b-2 cursor-pointer pb-1 border-white border-solid"
+								class="text-white text-sm pb-0 mb-1"
 							>
 								Terms
 							</p></a

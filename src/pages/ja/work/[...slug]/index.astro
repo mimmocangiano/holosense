@@ -4,11 +4,11 @@ import WorkLayout from "@/layouts/WorkLayout.astro";
 import { getCollectionStaticPaths } from "@/lib/collection-helpers";
 
 export interface Props {
-	data: CollectionEntry<"works">;
+  data: CollectionEntry<"works">;
 }
 
 export async function getStaticPaths() {
-	return await getCollectionStaticPaths("works", "it");
+  return await getCollectionStaticPaths("works", "ja");
 }
 
 const { data: work } = Astro.props;
@@ -16,5 +16,6 @@ const { Content } = await work.render();
 ---
 
 <WorkLayout frontmatter={work}>
-	<Content />
+  <Content />
 </WorkLayout>
+

@@ -17,9 +17,9 @@ const config: Config = {
 		extend: {
 			colors: tailwindcssPaletteGenerator([style.theme.colors.primary, style.theme.colors.secondary]),
 			fontFamily: {
-				sans: ["Inter Tight", ...defaultTheme.fontFamily.sans],
+				sans: ["IBM Plex Sans Condensed", ...defaultTheme.fontFamily.sans],
 				mono: ["Space Mono", ...defaultTheme.fontFamily.mono],
-				display: ["Montserrat", ...defaultTheme.fontFamily.sans],
+				display: ["IBM Plex Sans Condensed", ...defaultTheme.fontFamily.sans],
 			},
 		},
 	},
