@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "@majesticooss/mizar",
+      "name": "@holosense",
       "dependencies": {
         "@astrojs/alpinejs": "^0.4.0",
         "@astrojs/cloudflare": "0.0.0-cf-deps-chunk-20240407075425",

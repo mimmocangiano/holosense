@@ -1,18 +1,10 @@
-# [Mizar](https://mizar.majestico.co)
+# [Holosense](https://holosense.jp)
 
 <a href="https://astro.build/">![Astro](.github/images/astro-icon.png)</a>
 <a href="https://tailwindcss.com/">![Tailwind](.github/images/tailwind-icon.png)</a>
 <a href="https://alpinejs.dev/">![Alpine js](.github/images/alpine-icon.png)</a>
 
 Mizar is a template made with [Astro](https://astro.build), [Tailwind](https://tailwindcss.com/) and [AlpineJS](https://alpinejs.dev/).
-
-This project was strongly inspired by a template found on Webflow which I can longer find, if you are the author please let me know so I can give you the credits.
-
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/majesticooss/mizar)
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/majesticooss/mizar)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/majesticooss/mizar)
 
 
 ### [🧪 Site preview →](https://mizar.majestico.co)
